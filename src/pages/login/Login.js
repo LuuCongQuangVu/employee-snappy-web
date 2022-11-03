@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { toast } from 'react-toastify';
@@ -19,12 +19,14 @@ const propTypes = {
 };
 function Login({ login, user }) {
   // props
-  const { requesting, information = {} } = user;
+  const { requesting, information = {}, success } = user;
   // hooks
   const [inputLogin, setInputLogin] = useState({ email: '', password: '' });
   const { email, password } = inputLogin;
 
-  console.log(user);
+  // useEffect(()=>{
+  //   if(success)
+  // },[requesting])
 
   // handle
   const handleOnChangeInput = (event) =>
