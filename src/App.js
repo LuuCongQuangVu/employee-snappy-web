@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import { publicRoutes } from '~/routes';
+import store from '~/store';
 
 function App() {
   useEffect(() => {
@@ -10,28 +12,30 @@ function App() {
   }, [document.location.href]);
 
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          {publicRoutes.map((route, index) => {
-            const { path, component: Component, layout: Layout = null } = route;
-            if (Layout === null) return <Route key={index} path={path} element={<Component />} />;
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <Routes>
+            {publicRoutes.map((route, index) => {
+              const { path, component: Component, layout: Layout = null } = route;
+              if (Layout === null) return <Route key={index} path={path} element={<Component />} />;
 
-            return (
-              <Route
-                key={index}
-                path={path}
-                element={
-                  <Layout>
-                    <Component />
-                  </Layout>
-                }
-              />
-            );
-          })}
-        </Routes>
-      </div>
-    </Router>
+              return (
+                <Route
+                  key={index}
+                  path={path}
+                  element={
+                    <Layout>
+                      <Component />
+                    </Layout>
+                  }
+                />
+              );
+            })}
+          </Routes>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 

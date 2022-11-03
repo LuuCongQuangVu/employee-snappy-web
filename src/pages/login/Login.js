@@ -6,12 +6,17 @@ import styles from './Login.module.scss';
 import Input from '~/components/Input';
 import Button from '~/components/Button';
 import Spin from '~/components/Spin';
+import { withUser } from '~/hocs';
 
 const clsx = classNames.bind(styles);
 
-const propTypes = {};
+const propTypes = {
+  login: PropTypes.func,
+};
 
-function Login() {
+function Login({ login }) {
+  console.log(login);
+
   return (
     <Spin>
       <div className={clsx('wrapper')}>
@@ -44,4 +49,4 @@ function Login() {
 
 Login.propTypes = propTypes;
 
-export default Login;
+export default withUser(Login);
