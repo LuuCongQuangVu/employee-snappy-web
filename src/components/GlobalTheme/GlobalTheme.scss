@@ -1,0 +1,68 @@
+@import 'normalize.css';
+@import './TemplateStyles.scss';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #351d78;
+  --black: #000;
+  --white: #fff;
+
+  // Default layout
+
+  --default-layout-header-height: 60px;
+  --default-layout-width: 1150px;
+
+  // Border
+  --border-color: rgba(22, 24, 35, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html *::-webkit-scrollbar {
+  border-radius: 0;
+  width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(22, 24, 35, 0.06);
+}
+
+html *::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  overflow: overlay;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: unset;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+@keyframes rotate-anim {
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,22 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+
+  background: url(/assets/images/layout-auth.jpg) no-repeat 50% / cover;
+
+  .dark-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inner {
+    background-color: var(--white);
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+}
