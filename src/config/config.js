@@ -1,4 +1,4 @@
-const prod = process.env.NODE_ENV === 'production';
+const prod = process.env.NODE_ENV !== 'production';
 const api_url = process.env.REACT_APP_BASE_URL;
 
 const config = {

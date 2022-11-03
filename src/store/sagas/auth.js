@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-import { LOGIN, LOGIN_SUCCESS, LOGIN_ERROR } from '~/store/constants';
+import { LOGIN, LOGIN_SUCCESS, LOGIN_ERROR, LOCAL_ACCESS_TOKEN } from '~/store/constants';
 import { setToken } from '~/utils/token';
 import { API_URL } from '~/config';
 
@@ -27,14 +27,19 @@ function* login({ payload }) {
     password,
   };
   try {
-    const { data } = call(axios.post, url, body);
-    if (!data.success) {
-      yield put({ type: LOGIN_ERROR, error: data.message });
+    const { data } = yield call(axios.post, url, body);
+
+    console.log('data', data);
+
+    if (!data?.success) {
+      yield put({ type: LOGIN_ERROR, error: data?.message });
       setToken(null);
     } else {
       yield put({ type: LOGIN_SUCCESS, ...data });
       setToken(data.access_token);
+      localStorage.setItem(LOCAL_ACCESS_TOKEN, data.access_token);
     }
+
     return data;
   } catch (error) {
     console.log(error);

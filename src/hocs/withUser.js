@@ -3,20 +3,21 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { login } from '~/store/actions';
+import { selectUser } from '~/store/selector';
 
-const mapStateToProps = null;
+const mapStateToProps = (state) => ({ user: selectUser(state) });
 const mapDispatchToProps = (dispatch) => ({ actions: bindActionCreators({ login }, dispatch) });
 
 function withUser(WrappedComponent) {
   class WithUser extends React.Component {
     render() {
-      const { actions } = this.props;
+      const { actions, user } = this.props;
 
-      return <WrappedComponent {...actions} />;
+      return <WrappedComponent {...actions} user={user} />;
     }
   }
 
-  WithUser.displayName = `WithUser(${getDisplayName(WrappedComponent)})`;
+  // WithUser.displayName = `WithUser(${getDisplayName(WrappedComponent)})`;
   return connect(mapStateToProps, mapDispatchToProps)(WithUser);
 }
 

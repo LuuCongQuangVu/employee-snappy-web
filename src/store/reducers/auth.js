@@ -8,6 +8,7 @@ const initialState = {
     requesting: false,
     success: false,
     message: '',
+    information: {},
   },
 };
 

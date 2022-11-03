@@ -1,6 +1,5 @@
 @import 'normalize.css';
 @import './TemplateStyles.scss';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
   --primary: #351d78;
@@ -42,7 +41,6 @@ html *::-webkit-scrollbar-track {
 }
 
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
@@ -59,10 +57,4 @@ button {
 a {
   text-decoration: none;
   color: currentColor;
-}
-
-@keyframes rotate-anim {
-  100% {
-    transform: rotate(360deg);
-  }
 }
